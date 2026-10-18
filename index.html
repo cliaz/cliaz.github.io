@@ -1,1 +1,153 @@
-no
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>cliaz</title>
+<meta name="description" content="Projects by cliaz: homelab Docker stacks, scripts and World of Warcraft addons.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --text: #111827;
+    --text-2: #4b5563;
+    --text-3: #6b7280;
+    --border: #e5e7eb;
+    --surface: #f8fafc;
+    --accent: #4f46e5;
+    --accent-bg: #eef2ff;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  body { background: #fff; color: var(--text); font-family: Inter, system-ui, sans-serif; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; }
+  .container { max-width: 1040px; margin: 0 auto; padding: 0 32px; }
+
+  /* nav */
+  nav { display: flex; justify-content: space-between; align-items: center; padding-top: 22px; padding-bottom: 22px; font-size: .9rem; }
+  nav .brand { font-weight: 700; text-decoration: none; }
+  nav ul { list-style: none; display: flex; gap: 24px; padding: 0; }
+  nav ul a { color: var(--text-3); text-decoration: none; }
+  nav ul a:hover, nav ul a:focus-visible { color: var(--text); }
+
+  /* hero */
+  .hero { display: grid; grid-template-columns: 120px 1fr; gap: 32px; align-items: center; padding-top: 64px; padding-bottom: 48px; }
+  .avatar { width: 120px; height: 120px; border-radius: 50%; background: var(--accent-bg); color: var(--accent); display: grid; place-items: center; font-size: 2.6rem; font-weight: 700; }
+  h1 { font-size: 2.6rem; font-weight: 700; letter-spacing: -.03em; line-height: 1.2; }
+  .intro { margin-top: 10px; font-size: 1.05rem; color: var(--text-2); max-width: 640px; }
+  .intro.placeholder { color: #9ca3af; background: #f9fafb; border: 1px dashed #d1d5db; border-radius: 8px; padding: 12px 16px; }
+
+  /* sections */
+  section { padding-top: 32px; padding-bottom: 32px; }
+  .section-head { border-bottom: 1px solid var(--border); padding-bottom: 12px; margin-bottom: 22px; }
+  h2 { font-size: 1.1rem; font-weight: 600; }
+
+  /* cards */
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .card { border: 1px solid var(--border); border-radius: 10px; padding: 20px; display: flex; flex-direction: column; gap: 10px; transition: border-color .15s, box-shadow .15s; }
+  .card:hover { border-color: #c7d2fe; box-shadow: 0 2px 10px rgba(79, 70, 229, .06); }
+  .card h3 { font-size: .98rem; font-weight: 600; color: var(--accent); overflow-wrap: anywhere; }
+  .card h3 a { text-decoration: none; }
+  .card h3 a:hover, .card h3 a:focus-visible { text-decoration: underline; }
+  .card p { color: var(--text-2); font-size: .9rem; }
+  .meta { display: flex; gap: 14px; font-size: .78rem; color: var(--text-3); margin-top: auto; }
+
+  .card.featured { grid-column: 1 / -1; background: var(--surface); display: grid; grid-template-columns: 1fr auto; column-gap: 32px; align-items: center; }
+  .card.featured .body { display: flex; flex-direction: column; gap: 10px; }
+  .card.featured h3 { font-size: 1.15rem; }
+  .card.featured p { font-size: .95rem; }
+  .button { background: var(--text); color: #fff; padding: 10px 18px; border-radius: 8px; font-size: .88rem; font-weight: 500; text-decoration: none; white-space: nowrap; }
+  .button:hover, .button:focus-visible { background: #374151; }
+
+  /* forks */
+  .forks { list-style: none; padding: 0; display: flex; gap: 10px; flex-wrap: wrap; }
+  .forks a { display: inline-block; border: 1px solid var(--border); border-radius: 999px; padding: 6px 14px; font-size: .85rem; color: #374151; text-decoration: none; }
+  .forks a:hover, .forks a:focus-visible { border-color: #c7d2fe; color: var(--accent); }
+  .forks .lang { color: var(--text-3); margin-left: 8px; }
+
+  footer { margin-top: 40px; margin-bottom: 40px; padding-top: 20px; border-top: 1px solid var(--border); color: var(--text-3); font-size: .8rem; }
+
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+
+  @media (max-width: 860px) {
+    .grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 600px) {
+    .container { padding: 0 20px; }
+    nav ul { gap: 16px; }
+    .hero { grid-template-columns: 1fr; gap: 20px; padding-top: 32px; padding-bottom: 32px; }
+    .avatar { width: 80px; height: 80px; font-size: 1.8rem; }
+    h1 { font-size: 2.1rem; }
+    .grid { grid-template-columns: 1fr; }
+    .card.featured { grid-template-columns: 1fr; row-gap: 16px; }
+    .card.featured .button { justify-self: start; }
+  }
+</style>
+</head>
+<body>
+<header class="container">
+  <nav aria-label="Main">
+    <a class="brand" href="/">cliaz</a>
+    <ul>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="/homelab/">Homelab docs</a></li>
+      <li><a href="https://github.com/cliaz">GitHub</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <div class="container hero">
+    <div class="avatar" aria-hidden="true">C</div>
+    <div>
+      <h1>cliaz</h1>
+      <!-- TODO: replace with a sentence or two about what you do, and remove the "placeholder" class -->
+      <p class="intro placeholder">Placeholder: a sentence or two about what you do. Your words go here.</p>
+    </div>
+  </div>
+
+  <section class="container" id="projects" aria-labelledby="projects-heading">
+    <div class="section-head"><h2 id="projects-heading">Projects</h2></div>
+    <div class="grid">
+      <article class="card featured">
+        <div class="body">
+          <h3><a href="https://github.com/cliaz/homelab">homelab</a></h3>
+          <p>Docker stacks for a self-hosted media management &amp; streaming setup: *Arr apps, VPN-routed downloads, hardlinks, per-service users.</p>
+          <div class="meta"><span>Python · Docker</span></div>
+        </div>
+        <a class="button" href="/homelab/">Read the docs →</a>
+      </article>
+
+      <article class="card">
+        <h3><a href="https://github.com/cliaz/docker-container-ports-viewer">docker-container-ports-viewer</a></h3>
+        <p>Generates a list of the containers and exposed ports running on a Docker host, and builds links to them.</p>
+        <div class="meta"><span>Python</span></div>
+      </article>
+
+      <article class="card">
+        <h3><a href="https://github.com/cliaz/crap-stock-monitoring">crap-stock-monitoring</a></h3>
+        <p>Crap stock scripts.</p>
+        <div class="meta"><span>Python</span></div>
+      </article>
+
+      <article class="card">
+        <h3><a href="https://github.com/cliaz/Titan-Panel-Classic-Reagent-Tracker">Titan-Panel-Classic-Reagent-Tracker</a></h3>
+        <p>A continuation of the WoW Titan Panel Reagent Tracker addon by L'ombra.</p>
+        <div class="meta"><span>Lua</span></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="container" aria-labelledby="forks-heading">
+    <div class="section-head"><h2 id="forks-heading">Forks</h2></div>
+    <ul class="forks">
+      <li><a href="https://github.com/cliaz/BuffomatClassic-quickfix">BuffomatClassic-quickfix<span class="lang">Lua</span></a></li>
+      <li><a href="https://github.com/cliaz/CEPGP_BulkAward">CEPGP_BulkAward<span class="lang">Python</span></a></li>
+      <li><a href="https://github.com/cliaz/LTSS-Debian">LTSS-Debian<span class="lang">Shell</span></a></li>
+    </ul>
+  </section>
+</main>
+
+<footer class="container">© cliaz · Hosted on GitHub Pages</footer>
+</body>
+</html>
